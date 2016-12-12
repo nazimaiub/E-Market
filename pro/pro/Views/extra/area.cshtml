@@ -1,0 +1,11 @@
+﻿@model IEnumerable<pro.Models.area>
+@{
+    ViewBag.Title = "area";
+}
+
+<h2>area</h2>
+@foreach (var item in Model)
+{
+
+    <h3>@item.areaname</h3>
+}

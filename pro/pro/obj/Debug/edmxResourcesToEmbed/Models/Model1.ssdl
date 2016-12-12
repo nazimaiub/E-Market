@@ -1,0 +1,180 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="dbaseModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="dbaseModelStoreContainer">
+    <EntitySet Name="area" EntityType="dbaseModel.Store.area" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="camera" EntityType="dbaseModel.Store.camera" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="car" EntityType="dbaseModel.Store.car" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="city" EntityType="dbaseModel.Store.city" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="contactinfo" EntityType="dbaseModel.Store.contactinfo" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="furniture" EntityType="dbaseModel.Store.furniture" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="house" EntityType="dbaseModel.Store.house" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="job" EntityType="dbaseModel.Store.job" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="land" EntityType="dbaseModel.Store.land" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="menu" EntityType="dbaseModel.Store.menu" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="mobile" EntityType="dbaseModel.Store.mobile" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_area_city" Association="dbaseModel.Store.FK_area_city">
+      <End Role="city" EntitySet="city" />
+      <End Role="area" EntitySet="area" />
+    </AssociationSet>
+    <AssociationSet Name="FK_menu_menu" Association="dbaseModel.Store.FK_menu_menu">
+      <End Role="menu" EntitySet="menu" />
+      <End Role="menu1" EntitySet="menu" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="area">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="areaname" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="cid" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="camera">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="brandname" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="price" Type="float" Nullable="false" />
+    <Property Name="image" Type="varchar" MaxLength="250" />
+    <Property Name="posttime" Type="datetime" Nullable="false" />
+    <Property Name="status" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="location" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="phone" Type="varchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="car">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="brand" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="image" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="price" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="phone" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="status" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="poston" Type="datetime" Nullable="false" />
+    <Property Name="area" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="password" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="email" Type="varchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="city">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="cityname" Type="varchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="contactinfo">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="email" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="phoneno" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="password" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="city" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="area" Type="varchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="furniture">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="title" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="description" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="price" Type="float" Nullable="false" />
+    <Property Name="image" Type="varchar" MaxLength="50" />
+    <Property Name="status" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="location" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="poston" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="house">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="address" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="housesize" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="title" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="description" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="price" Type="float" Nullable="false" />
+    <Property Name="location" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="status" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="image" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="poston" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="job">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="category" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="jobtype" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="website" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="phone" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="salary" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="jobtitle" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="description" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="coname" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="location" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="status" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="poston" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="land">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="title" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="image" Type="image" Nullable="false" />
+    <Property Name="poston" Type="datetime" Nullable="false" />
+    <Property Name="status" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="location" Type="varchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="menu">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="navurl" Type="varchar" Nullable="false" MaxLength="250" />
+    <Property Name="parentid" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="mobile">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="brandname" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="modelno" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="image" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="price" Type="float" Nullable="false" />
+    <Property Name="poston" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="status" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK_area_city">
+    <End Role="city" Type="dbaseModel.Store.city" Multiplicity="1" />
+    <End Role="area" Type="dbaseModel.Store.area" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="city">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="area">
+        <PropertyRef Name="cid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_menu_menu">
+    <End Role="menu" Type="dbaseModel.Store.menu" Multiplicity="1" />
+    <End Role="menu1" Type="dbaseModel.Store.menu" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="menu">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="menu1">
+        <PropertyRef Name="id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

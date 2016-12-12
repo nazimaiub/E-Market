@@ -1,0 +1,25 @@
+div#banner {
+    width:960px;
+    height:200px;
+    margin:auto;
+    background:url(../photo/fotogrph-skyscraping.jpg) repeat 0 0;
+}
+ 
+div#banner p {    
+    font: 15px Arial, Helvetica, sans-serif;
+    color:white;
+    position:relative;   
+    left:20px;
+    top:120px;
+    width:305px;
+    padding:20px;
+    background:black;
+    text-align:center;
+    text-transform:uppercase;
+    letter-spacing:20px;
+    zoom: 1;
+    filter: alpha(opacity=50);
+    opacity: 0.5;     
+}
+    
+  

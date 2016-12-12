@@ -1,0 +1,41 @@
+﻿@using PagedList
+@using PagedList.Mvc
+
+@model IPagedList<pro.Models.camera>
+@{
+    ViewBag.Title = "Mobile1";
+    Layout = "~/Views/Shared/admin.cshtml";
+}
+
+<h2>Mobile1</h2>
+<link href="../../Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+
+@foreach (var item in Model)
+{
+     
+    <a href="~/details/Details/@item.id">
+<table style=" background-color:; border:3px solid #092758; width:100%">
+<tr>
+<td><img src="@Url.Content(item.image)" width="100px" height="100px" /></td>
+<td>
+<table>
+<tr><td><h3>@item.brandname</h3></td><td></td><td></td></tr>
+
+<tr><td>@item.location</td><td align="right">@item.posttime</td></tr>
+</table>
+<td>
+<table><tr><td>@item.price/=</td></tr></table>
+</td>
+</td>
+</tr>
+
+
+</table>
+</a>
+    }
+    
+
+<div class="pagedList">
+        @Html.PagedListPager(Model, page => Url.Action("Mobile", new { page }), PagedListRenderOptions.PageNumbersOnly)
+    </div>

@@ -1,0 +1,66 @@
+﻿@model pro.Models.camera
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_layout.cshtml";
+}
+<style type="text/css">
+    #one
+    {
+        margin-left:20%;
+    }
+    img
+    {
+        height:150px;
+        width:150px;
+    }
+</style>
+<div id="one">
+<h2>Details</h2>
+
+<fieldset>
+    <legend>camera</legend>
+    
+    <div><img src=@Url.Content(Model.image)/></div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.brandname)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.brandname)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.price)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.price)
+    </div>
+
+   
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.posttime)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.posttime)
+    </div>
+
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.location)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.location)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.phone)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.phone)
+    </div>
+</fieldset>
+<p>|
+    @Html.ActionLink("Back to List", "index","Home")
+</p>
+</div>

@@ -1,0 +1,53 @@
+﻿@model pro.Models.menu
+@using pro.Models;
+@{
+    dbaseEntities1 db = new dbaseEntities1();
+    ViewBag.Title = "admin";
+    ViewBag.data=db.menus.OrderBy(y => y.name).Where(x => x.parentid == 0);
+}
+
+
+<h2>admin</h2>
+@if (@ViewBag.msg != null)
+{
+       <div >
+         <h5>  @ViewBag.msg</h5>
+       </div>
+}
+
+@using (Html.BeginForm("createmenu","login")) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>menu</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.name, "Sub Menu Name")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.name)
+            @Html.ValidationMessageFor(model => model.name)
+        </div>
+
+       
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.parentid,"Menu Name")
+        </div>
+        
+             @Html.DropDownList("Category", new SelectList(@ViewBag.data, "id", "name"), "")
+            
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    
+}

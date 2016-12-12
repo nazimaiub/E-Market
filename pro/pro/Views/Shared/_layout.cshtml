@@ -1,0 +1,42 @@
+@using pro.Models
+@{
+    dbaseEntities1 db = new dbaseEntities1();
+    List<menu> menus = db.menus.OrderBy(x => x.name).ToList();
+    ViewBag.menulist = menus;
+    var Users = (List<menu>)ViewBag.menulist;
+}
+<html>
+<head>
+ <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>@ViewBag.title</title>
+<link rel="stylesheet" href="@Url.Content("~/Content/styles.css")" type="text/css" />
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
+</head>
+<body>
+
+<div id="sitename">
+			<div class="width">
+				<h1><a href="#"> Sell Me </a></h1>
+
+				<nav>
+					<ul>
+        					<li><a href="~/Home/index">Home</a></li>
+        	    			
+         	   				@if(@ViewBag.user!=null)
+                 {
+                     <li><a href="/login/Index">Hi @ViewBag.user</a></li>
+                     <li class="end"><a href="/login/logout">Logout</a></li>
+                 }
+               
+        				</ul>
+				</nav>
+	
+				<div class="clear"></div>
+			</div>
+		</div>
+		
+        <table>
+        <tr>
+        <td id="content">@RenderBody()</td></tr>
+        
+    </table>

@@ -1,0 +1,74 @@
+﻿@model IEnumerable<pro.Models.menu>
+@using pro.Models;
+
+@{
+    dbaseEntities1 db = new dbaseEntities1();
+    Layout = "~/Views/Shared/_layout.cshtml";
+   //ViewBag.data = db.menus.Select(men => new { name = men.menu1.name }).ToList();
+    ViewBag.data = db.menus.OrderBy(y => y.name).Where(x => x.parentid != 0);
+    //ViewBag.msg = "Your Add has been Posted";
+}
+<style type="text/css">
+
+#abc
+{
+    margin-left:43%;
+    
+    margin-top:35px;
+    display:table; 
+   
+}
+#msg
+{
+    text-align:center;
+    border:solid 1px green;
+    color:Green;
+    height:40px;
+}
+
+</style>
+<script src="../../Scripts/jquery-2.1.1.min.js" type="text/javascript"></script>
+
+<script src="../../Scripts/jquery.unobtrusive-ajax.min.js" type="text/javascript"></script>
+
+
+<html>
+<head runat="server">
+    <script src="../../Scripts/jquery.unobtrusive-ajax.min.js" type="text/javascript"></script>
+    <script src="../../Scripts/jquery.unobtrusive-ajax.js" type="text/javascript"></script>
+    <script type="text/javascript">
+     
+    
+        function loadPartial() 
+        {
+            var name = $("#Category").val();
+            //sleep(2);
+            $("#abc").html('<img src="../../photo/spiffygif_30x30.gif" alt="Loading, please wait" />');
+           @* alert(name);*@
+            $("#abc").load('/Addfreepost/Categorydetails/?name=' + name);
+            
+        }
+        
+    </script>
+    <title>Index</title>
+</head>
+<body>
+@if (ViewBag.msg != null)
+{
+       <div id="msg">
+         <h5>  @ViewBag.msg</h5>
+       </div>
+}
+
+<div align="center">
+<h1>Please Select a Category</h1>
+<h1>.</h1>
+
+   @Html.DropDownList("Category", new SelectList(ViewBag.data, "name", "name"),"", new { onchange = "loadPartial()" })
+</div>
+
+<div id="load"></div>
+<div id="abc"></div>
+
+    </body>
+</html>

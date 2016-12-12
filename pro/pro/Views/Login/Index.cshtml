@@ -1,0 +1,90 @@
+﻿@model pro.Models.login
+
+@{
+    ViewBag.Title = "Login";
+    //Layout = "~/Views/Shared/_layout.cshtml";
+}
+<style>
+    body
+     {
+        margin-left:30%;
+        margin-right:30%;
+       
+    }
+</style>
+
+@*<link href="~/Content/login.css" rel="stylesheet" />*@
+<link href="~/Content/login2.css" rel="stylesheet" />
+<!DOCTYPE html>
+<html>
+<body>
+
+
+    <div>
+        <h2>Login Panel</h2>
+        @using (Html.BeginForm("verify", "login", FormMethod.Post))
+        {
+            <div class="imgcontainer">
+                <img src="~/photo/limg.jpg" alt="Avatar" class="avatar">
+            </div>
+
+            <div class="container">
+                <label><b>Username</b></label>
+                <input type="text" placeholder="Enter Username" name="username" required>
+
+                <label><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" name="password" required>
+
+                <button type="submit">Login</button>
+                <input type="checkbox" checked="checked"> Remember me
+            </div>
+
+            <div class="container" style="background-color:#f1f1f1">
+                <a href="~/Home/Index"><button type="button" class="cancelbtn">Back</button></a>
+                <span class="psw">Forgot <a href="#">password?</a></span>
+            </div>
+        }
+
+</body>
+<div>
+    @Html.ActionLink("Back to List", "Index","Home")
+</div>
+</html>
+</div>
+
+@*<div style="margin:3%"><h2>Please Login</h2></div>
+
+
+
+@if (ViewBag.s != null)
+{
+       <div id="msg">
+         <h5>  @ViewBag.s</h5>
+       </div>
+}
+
+
+@using (Html.BeginForm("verify", "login", FormMethod.Post))
+{
+<fieldset style="margin:3%">
+        <legend>Login</legend>
+
+        <div class="editor-label">
+           Username
+        </div>
+        <div class="editor-field">
+           <input type="text" id="username" name="username" />
+
+        </div>
+        <div class="editor-label">
+           Password
+        </div>
+        <div class="editor-field">
+        <input type="password" id="password" name="password" />
+
+        </div>
+      <p><input type="submit" value="Login" /></p>
+        
+        </fieldset>
+    
+}*@

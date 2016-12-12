@@ -1,0 +1,87 @@
+﻿@model pro.Models.car
+
+@{
+    ViewBag.Title = "Car";
+}
+
+<script src="~/Scripts/jquery-1.7.1.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+@*<link href="~/Content/Site.css" rel="stylesheet" type="text/css" />*@
+<style>
+    .field-validation-error {
+        color: #D70800;
+        font-weight: bold;
+    }
+</style>
+<h2>Car</h2>
+
+@using (Html.BeginForm("Create", "Addfreepost",FormMethod.Post, new { enctype="multipart/form-data", data_ajax="false"}))
+{
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend></legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.brand)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.brand)
+            @Html.ValidationMessageFor(model => model.brand)
+        </div>
+         <div class="editor-label">
+            @Html.LabelFor(model => model.image)
+        </div>
+        <p><input type='file' name='file' id='file' /></p>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.price)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.price)
+            @Html.ValidationMessageFor(model => model.price)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.phone)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.phone)
+            @Html.ValidationMessageFor(model => model.phone)
+        </div>   
+         @Html.Partial("second")
+         <div class="editor-label">
+            @Html.LabelFor(model => model.email)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.email)
+            @Html.ValidationMessageFor(model => model.email)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.password)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.password)
+            @Html.ValidationMessageFor(model => model.password)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.retypepass)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.retypepass)
+            @Html.ValidationMessageFor(model => model.retypepass)
+        </div>
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+   
+}

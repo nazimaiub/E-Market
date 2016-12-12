@@ -1,0 +1,46 @@
+﻿@model pro.Models.menu
+
+@{
+    ViewBag.Title = "admin";
+   
+}
+
+<h2>admin</h2>
+
+@using (Html.BeginForm("createmenu","login")) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>menu</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.name)
+            @Html.ValidationMessageFor(model => model.name)
+        </div>
+
+       
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.parentid)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.parentid)
+            @Html.ValidationMessageFor(model => model.parentid)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    
+}

@@ -1,0 +1,136 @@
+﻿@using PagedList
+@using PagedList.Mvc
+
+@model IPagedList<pro.Models.camera>
+
+@{
+    ViewBag.Title = "Camera";
+    Layout = "~/Views/Shared/admin.cshtml";
+}
+
+
+<style>
+    .button  {
+    outline: 0; 
+    margin: 0 4px 0 0;
+    padding: 0 1em;
+    height: 2em;
+    text-decoration: none !important; 
+    cursor: pointer; 
+    position: relative;
+    text-align: center;
+    display: inline-block;
+    background-color:Green;
+    border:1px solid Lime;
+}
+a.button { color:White;}
+    #msg {
+        text-align: center;
+        border: solid 1px green;
+        color: Green;
+        height: 40px;
+    }
+</style>
+<link href="../../Content/PagedList.css" rel="stylesheet" type="text/css" />
+@if (ViewBag.msg != null)
+{
+    <div id="msg">
+        <h5>  @ViewBag.msg</h5>
+    </div>
+}
+<h2>Camera</h2>
+
+@foreach (var item in Model)
+{
+     
+    
+<table style=" background-color:; border:3px solid #092758; width:100%">
+<tr>
+<td><img src="@Url.Content(item.image)" width="100px" height="100px" /></td>
+<td>
+<table>
+<tr><td><h3>@item.brandname</h3></td><td></td><td></td></tr>
+
+<tr><td>@item.location</td><td align="right">@item.posttime</td></tr>
+</table>
+<td>
+<table><tr><td>@item.price/=</td><td>@Html.ActionLink("ViewDetails", "Index", "ViewDetails", new { name = "Camera", id = item.id }, new { @class = "button" })</td></tr></table>
+</td>
+</td>
+</tr>
+
+
+</table>
+
+}
+    
+
+<div class="pagedList">
+        @Html.PagedListPager(Model, page => Url.Action("Ads", new {name="Camera", page }), PagedListRenderOptions.PageNumbersOnly)
+    </div>
+@*@model pro.Models.camera
+@{
+    ViewBag.Title = "CameraDetails";
+    Layout = "~/Views/Shared/admin.cshtml";
+}
+
+<style type="text/css">
+    #one {
+        margin-left: 20%;
+    }
+
+    img {
+        height: 150px;
+        width: 150px;
+    }
+</style>
+<div id="one">
+    <h2>Details</h2>
+
+    <fieldset>
+        <legend>camera</legend>
+
+        <div><img src="@Url.Content(Model.image)" width="100px" height="100px" /></div>
+
+        <div class="display-label">
+            @Html.DisplayNameFor(model => model.brandname)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.brandname)
+        </div>
+
+        <div class="display-label">
+            @Html.DisplayNameFor(model => model.price)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.price)
+        </div>
+
+
+        <div class="display-label">
+            @Html.DisplayNameFor(model => model.posttime)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.posttime)
+        </div>
+
+
+        <div class="display-label">
+            @Html.DisplayNameFor(model => model.location)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.location)
+        </div>
+
+        <div class="display-label">
+            @Html.DisplayNameFor(model => model.phone)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.phone)
+        </div>
+    </fieldset>
+    <p>
+        |
+        @Html.ActionLink("Back to List", "index", "Admin")
+    </p>
+</div>*@

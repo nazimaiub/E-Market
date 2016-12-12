@@ -1,0 +1,81 @@
+﻿@using pro.Models
+@{
+    dbaseEntities1 db = new dbaseEntities1();
+    List<menu> menus = db.menus.OrderBy(x => x.name).ToList();
+    ViewBag.menulist = menus;
+    var Users = (List<menu>)ViewBag.menulist;
+}
+<html>
+<head>
+ <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>নাজিম অ্যাপ্লিকেশন</title>
+<link rel="stylesheet" href="@Url.Content("~/Content/styles.css")" type="text/css" />
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
+</head>
+<body>
+
+<div id="sitename">
+			<div class="width">
+				<h1><a href="#">Sell Me</a></h1>
+
+				<nav>
+					<ul>
+        					<li class="start selected"><a href="/Home/index">হোম</a></li>
+        	    			
+         	   				@*<li><a href="#">Products</a></li>*@
+          	  				<li><a href="/login/Index">লগ ইন</a></li>
+          	 				<li class="end"><a href="/contact/Index">যোগাযোগ</a></li>
+        				</ul>
+				</nav>
+	
+				<div class="clear"></div>
+			</div>
+		</div>
+		<header>
+        
+			<div class="width">
+            <div><a href="/Addfreepost/Index" id="addbutton">ফ্রী এড পোস্ট করুন</a></div>
+				<h2>স্বাগতম সেল মি ওয়েবসাইটে!<span></span></h2>
+				<div class="tagline">
+					<p>Welcome to Sell Me.com - the largest marketplace in Bangladesh.Buy and sell everything from used cars to mobile phones and computers, or search for property, jobs and more in Bangladesh - for free!.Select a region below to get started:
+</p>
+				</div>
+			</div>
+		</header>
+        <section id="body" class="width clear">
+
+        <table border="0">
+    <tr>
+    <td id="menu"> 
+			<aside id="sidebar" class="column-left">
+            
+            @foreach (var i in Users)
+            {
+                if (i.parentid != 0)
+                {
+                }
+
+                else
+                {
+                    <ul class="blocklist">
+                    <li class="selected-item"><h4>@i.name</h4>
+                    </ul>
+                        
+                }
+                foreach (var item in Users.Where(a => a.parentid == i.id))
+                {
+                 
+                <li class="blocklist">
+                <a>@Html.ActionLink(item.menu2.name, item.navurl, i.menu2.name)</a>             
+                </li>
+                
+                
+                }
+            }
+                </td><td id="content">@RenderBody()</td></tr>
+        
+    </table>
+            
+	</ul>
+			</aside>
+			

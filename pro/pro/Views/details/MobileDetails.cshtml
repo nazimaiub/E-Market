@@ -1,0 +1,58 @@
+﻿@model pro.Models.mobile
+@{
+    ViewBag.Title = "mobileDetails";
+    Layout = "~/Views/Shared/_layout.cshtml";
+}
+
+<style type="text/css">
+    #one {
+        margin-left: 20%;
+    }
+
+    img {
+        height: 150px;
+        width: 150px;
+    }
+</style>
+<div id="one">
+    <h2>Details</h2>
+
+    <fieldset>
+        <legend>Mobile</legend>
+
+        <div><img src="@Url.Content(Model.image)" width="100px" height="100px" /></div>
+
+        <div class="display-label">
+            @Html.DisplayNameFor(model => model.brandname)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.brandname)
+        </div>
+
+        <div class="display-label">
+            @Html.DisplayNameFor(model => model.price)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.price)
+        </div>
+
+
+        <div class="display-label">
+            @Html.DisplayNameFor(model => model.poston)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.poston)
+        </div>
+
+        <div class="display-label">
+            @Html.DisplayNameFor(model => model.modelno)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.modelno)
+        </div>
+    </fieldset>
+    <p>
+        |
+        @Html.ActionLink("Back to List", "index", "Home")
+    </p>
+</div>

@@ -1,0 +1,104 @@
+﻿@using PagedList
+@using PagedList.Mvc
+
+@model IPagedList<pro.Models.mobile>
+
+@{
+    ViewBag.Title = "Mobile";
+    Layout = "~/Views/Shared/layout.cshtml";
+}
+
+<link href="../../Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+
+@foreach (var item in Model)
+{
+
+    <a href="~/details/MobileDetails/@item.id">
+        <table style=" background-color:; border:3px solid #092758; width:100%">
+            <tr>
+                <td><img src="@Url.Content(item.image)" width="100px" height="100px" /></td>
+                <td>
+                    <table>
+                        <tr><td><h3>@item.brandname &nbsp @item.modelno</h3></td><td></td><td></td></tr>
+
+                        <tr><td>Dhaka</td><td align="right">@item.poston</td></tr>
+                    </table>
+                <td>
+                    <table><tr><td>@item.price/=</td></tr></table>
+                </td>
+                </td>
+            </tr>
+
+
+        </table>
+    </a>
+}
+
+
+<div class="pagedList">
+    @Html.PagedListPager(Model, page => Url.Action("Mobile", new { page }), PagedListRenderOptions.PageNumbersOnly)
+</div>
+
+@*@model IEnumerable<pro.Models.mobile>
+
+@{
+    ViewBag.Title = "Mobile";
+    
+    Layout = "~/Views/Shared/layout.cshtml";
+    var grid = new WebGrid(source: Model, canPage: true, rowsPerPage: 4);
+    grid.Pager(WebGridPagerModes.All);
+}
+<style type="text/css">
+.part
+{
+width:100%;
+height:100px;
+   border:1px solid black;;
+
+}
+.party td
+{
+       border-bottom:1px solid black;
+      width:50px;
+    margin-top:10px;
+}
+.footer
+{
+   
+   border:1px solid black;
+}
+.party
+{
+    margin-left:15%;
+    
+    margin-top:10px;
+    display:table;
+    
+    
+    
+}
+
+</style>
+<a href="../../Controllers/detailsController.cs">
+<div>
+@grid.GetHtml(
+tableStyle:"party",
+footerStyle: "part",
+headerStyle: "footer",
+rowStyle:"part",
+alternatingRowStyle:"part",
+columns:grid.Columns(
+//grid.Column(columnName:"image",header:<img src="@Url.Content(item.image)"/>),
+grid.Column(
+
+                     format: (item) =>
+                     {
+                         return Html.Raw(string.Format("<text><img src=\"{0}\" alt=\"Image\" width='100px' height='100px'/></text>", Url.Content(@item.image)));
+                     }
+                    ),
+grid.Column(columnName:"brandname",header:"brandname"),
+grid.Column(columnName:"price",header:"brandname")))
+</div>
+</a>*@
+

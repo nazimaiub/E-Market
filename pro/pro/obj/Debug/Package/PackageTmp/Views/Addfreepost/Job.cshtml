@@ -1,0 +1,101 @@
+﻿@model pro.Models.job
+
+@{
+    ViewBag.Title = "job";
+}
+
+<h2></h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend></legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.category)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.category)
+            @Html.ValidationMessageFor(model => model.category)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.jobtype)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.jobtype)
+            @Html.ValidationMessageFor(model => model.jobtype)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.website)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.website)
+            @Html.ValidationMessageFor(model => model.website)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.phone)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.phone)
+            @Html.ValidationMessageFor(model => model.phone)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.salary)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.salary)
+            @Html.ValidationMessageFor(model => model.salary)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.jobtitle)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.jobtitle)
+            @Html.ValidationMessageFor(model => model.jobtitle)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.description)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.description)
+            @Html.ValidationMessageFor(model => model.description)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.coname)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.coname)
+            @Html.ValidationMessageFor(model => model.coname)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.location)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.location)
+            @Html.ValidationMessageFor(model => model.location)
+        </div>
+
+       
+
+        
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+

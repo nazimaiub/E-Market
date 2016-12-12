@@ -1,0 +1,78 @@
+﻿@model  pro.Models.camera
+
+@{
+    
+    ViewBag.Title = "Camera";
+}
+<script src="~/Scripts/jquery-1.7.1.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<h2></h2>
+
+@using (Html.BeginForm("Createcamera", "Addfreepost",FormMethod.Post, new { enctype="multipart/form-data", data_ajax="false"}))
+{
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend></legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.brandname)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.brandname)
+            @Html.ValidationMessageFor(model => model.brandname)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.price)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.price)
+            @Html.ValidationMessageFor(model => model.price)
+        </div>
+         <div class="editor-label">
+            @Html.LabelFor(model => model.image)
+        </div>
+        <p><input type='file' name='file' id='file' /></p>
+        
+        <div class="editor-label">
+            @Html.LabelFor(model => model.location)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.location)
+            @Html.ValidationMessageFor(model => model.location)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.phone)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.phone)
+            @Html.ValidationMessageFor(model => model.phone)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.confirmphone)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.confirmphone)
+            @Html.ValidationMessageFor(model => model.confirmphone)
+        </div>
+        @Html.Partial("second");
+  
+       
+        <p>
+            <input type="submit" value="Create" name="Create"/>
+        </p>
+    </fieldset>
+}
+
+
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    
+}

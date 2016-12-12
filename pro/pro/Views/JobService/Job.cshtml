@@ -1,0 +1,30 @@
+﻿@model IEnumerable<pro.Models.job>
+
+@{
+    ViewBag.Title = "Job";
+    Layout = "~/Views/Shared/layout.cshtml";
+}
+
+<div align="center"><h2>Job</h2></div>
+@foreach(var item in Model)
+{
+    <a href="../../Controllers/detailsController.cs">
+<table style=" background-color:; border:1px solid black; width:100%">
+<tr>
+<td><img src="@Url.Content(item.category)" width="100px" height="100px" /></td>
+<td>
+<table>
+<tr><td><h3>@item.jobtitle</h3></td><td></td><td></td></tr>
+
+<tr><td>@item.coname</td><td align="right">@item.poston</td></tr>
+</table>
+<td>
+<table><tr><td>@item.location</td></tr></table>
+</td>
+</td>
+</tr>
+
+
+</table>
+</a>
+}

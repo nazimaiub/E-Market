@@ -1,0 +1,564 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="dbaseModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="dbaseModelStoreContainer">
+          <EntitySet Name="area" EntityType="dbaseModel.Store.area" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="camera" EntityType="dbaseModel.Store.camera" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="car" EntityType="dbaseModel.Store.car" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="city" EntityType="dbaseModel.Store.city" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="contactinfo" EntityType="dbaseModel.Store.contactinfo" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="furniture" EntityType="dbaseModel.Store.furniture" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="house" EntityType="dbaseModel.Store.house" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="job" EntityType="dbaseModel.Store.job" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="land" EntityType="dbaseModel.Store.land" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="menu" EntityType="dbaseModel.Store.menu" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="mobile" EntityType="dbaseModel.Store.mobile" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_area_city" Association="dbaseModel.Store.FK_area_city">
+            <End Role="city" EntitySet="city" />
+            <End Role="area" EntitySet="area" />
+          </AssociationSet>
+          <AssociationSet Name="FK_menu_menu" Association="dbaseModel.Store.FK_menu_menu">
+            <End Role="menu" EntitySet="menu" />
+            <End Role="menu1" EntitySet="menu" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="area">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="areaname" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="cid" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="camera">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="brandname" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="price" Type="float" Nullable="false" />
+          <Property Name="image" Type="varchar" MaxLength="250" />
+          <Property Name="posttime" Type="datetime" Nullable="false" />
+          <Property Name="status" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="location" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="phone" Type="varchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="car">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="brand" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="image" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="price" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="phone" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="status" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="poston" Type="datetime" Nullable="false" />
+          <Property Name="area" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="password" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="email" Type="varchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="city">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="cityname" Type="varchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="contactinfo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="email" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="phoneno" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="password" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="city" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="area" Type="varchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="furniture">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="description" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="price" Type="float" Nullable="false" />
+          <Property Name="image" Type="varchar" MaxLength="50" />
+          <Property Name="status" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="location" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="poston" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="house">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="address" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="housesize" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="title" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="description" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="price" Type="float" Nullable="false" />
+          <Property Name="location" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="status" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="image" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="poston" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="job">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="category" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="jobtype" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="website" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="phone" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="salary" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="jobtitle" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="description" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="coname" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="location" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="status" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="poston" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="land">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="image" Type="image" Nullable="false" />
+          <Property Name="poston" Type="datetime" Nullable="false" />
+          <Property Name="status" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="location" Type="varchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="menu">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="navurl" Type="varchar" Nullable="false" MaxLength="250" />
+          <Property Name="parentid" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="mobile">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="brandname" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="modelno" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="image" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="price" Type="float" Nullable="false" />
+          <Property Name="poston" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="status" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_area_city">
+          <End Role="city" Type="dbaseModel.Store.city" Multiplicity="1" />
+          <End Role="area" Type="dbaseModel.Store.area" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="city">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="area">
+              <PropertyRef Name="cid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_menu_menu">
+          <End Role="menu" Type="dbaseModel.Store.menu" Multiplicity="1" />
+          <End Role="menu1" Type="dbaseModel.Store.menu" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="menu">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="menu1">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="dbaseModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="dbaseEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="contactinfoes" EntityType="dbaseModel.contactinfo" />
+          <EntitySet Name="menus" EntityType="dbaseModel.menu" />
+          <AssociationSet Name="FK_menu_menu" Association="dbaseModel.FK_menu_menu">
+            <End Role="menu" EntitySet="menus" />
+            <End Role="menu1" EntitySet="menus" />
+          </AssociationSet>
+          <EntitySet Name="furnitures" EntityType="dbaseModel.furniture" />
+          <EntitySet Name="houses" EntityType="dbaseModel.house" />
+          <EntitySet Name="jobs" EntityType="dbaseModel.job" />
+          <EntitySet Name="lands" EntityType="dbaseModel.land" />
+          <EntitySet Name="mobiles" EntityType="dbaseModel.mobile" />
+          <EntitySet Name="cameras" EntityType="dbaseModel.camera" />
+          <EntitySet Name="areas" EntityType="dbaseModel.area" />
+          <EntitySet Name="cars" EntityType="dbaseModel.car" />
+          <EntitySet Name="cities" EntityType="dbaseModel.city" />
+          <AssociationSet Name="FK_area_city" Association="dbaseModel.FK_area_city">
+            <End Role="city" EntitySet="cities" />
+            <End Role="area" EntitySet="areas" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="contactinfo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="email" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="phoneno" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="password" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="city" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="area" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="menu">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="navurl" Type="String" Nullable="false" MaxLength="250" Unicode="false" FixedLength="false" />
+          <Property Name="parentid" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="menu1" Relationship="dbaseModel.FK_menu_menu" FromRole="menu" ToRole="menu1" />
+          <NavigationProperty Name="menu2" Relationship="dbaseModel.FK_menu_menu" FromRole="menu1" ToRole="menu" />
+        </EntityType>
+        <Association Name="FK_menu_menu">
+          <End Role="menu" Type="dbaseModel.menu" Multiplicity="1" />
+          <End Role="menu1" Type="dbaseModel.menu" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="menu">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="menu1">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="furniture">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="title" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="description" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Double" Name="price" Nullable="false" />
+          <Property Type="String" Name="image" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="status" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="location" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="poston" Nullable="false" />
+        </EntityType>
+        <EntityType Name="house">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="address" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="housesize" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="title" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="description" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Double" Name="price" Nullable="false" />
+          <Property Type="String" Name="location" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="status" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="image" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="poston" Nullable="false" />
+        </EntityType>
+        <EntityType Name="job">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="category" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="jobtype" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="website" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="phone" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="salary" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="jobtitle" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="description" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="coname" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="location" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="status" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="poston" Nullable="false" />
+        </EntityType>
+        <EntityType Name="land">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="title" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Binary" Name="image" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <Property Type="DateTime" Name="poston" Nullable="false" />
+          <Property Type="String" Name="status" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="location" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="mobile">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="brandname" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="modelno" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="image" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Double" Name="price" Nullable="false" />
+          <Property Type="String" Name="poston" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="status" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="camera">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="brandname" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Double" Name="price" Nullable="false" />
+          <Property Type="String" Name="image" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="posttime" Nullable="false" />
+          <Property Type="String" Name="status" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="location" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="phone" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="area">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="String" Name="id" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="areaname" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="cid" Nullable="false" />
+          <NavigationProperty Name="city" Relationship="dbaseModel.FK_area_city" FromRole="area" ToRole="city" />
+        </EntityType>
+        <EntityType Name="car">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="brand" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="image" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="price" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="phone" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="status" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="poston" Nullable="false" />
+          <Property Type="String" Name="area" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="password" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="email" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="city">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="cityname" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="areas" Relationship="dbaseModel.FK_area_city" FromRole="city" ToRole="area" />
+        </EntityType>
+        <Association Name="FK_area_city">
+          <End Type="dbaseModel.city" Role="city" Multiplicity="1" />
+          <End Type="dbaseModel.area" Role="area" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="city">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="area">
+              <PropertyRef Name="cid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="dbaseModelStoreContainer" CdmEntityContainer="dbaseEntities1">
+          <EntitySetMapping Name="contactinfoes">
+            <EntityTypeMapping TypeName="dbaseModel.contactinfo">
+              <MappingFragment StoreEntitySet="contactinfo">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="phoneno" ColumnName="phoneno" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="area" ColumnName="area" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="menus">
+            <EntityTypeMapping TypeName="dbaseModel.menu">
+              <MappingFragment StoreEntitySet="menu">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="navurl" ColumnName="navurl" />
+                <ScalarProperty Name="parentid" ColumnName="parentid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="furnitures">
+            <EntityTypeMapping TypeName="dbaseModel.furniture">
+              <MappingFragment StoreEntitySet="furniture">
+                <ScalarProperty Name="poston" ColumnName="poston" />
+                <ScalarProperty Name="location" ColumnName="location" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="houses">
+            <EntityTypeMapping TypeName="dbaseModel.house">
+              <MappingFragment StoreEntitySet="house">
+                <ScalarProperty Name="poston" ColumnName="poston" />
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="location" ColumnName="location" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="housesize" ColumnName="housesize" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="jobs">
+            <EntityTypeMapping TypeName="dbaseModel.job">
+              <MappingFragment StoreEntitySet="job">
+                <ScalarProperty Name="poston" ColumnName="poston" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="location" ColumnName="location" />
+                <ScalarProperty Name="coname" ColumnName="coname" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="jobtitle" ColumnName="jobtitle" />
+                <ScalarProperty Name="salary" ColumnName="salary" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="website" ColumnName="website" />
+                <ScalarProperty Name="jobtype" ColumnName="jobtype" />
+                <ScalarProperty Name="category" ColumnName="category" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="lands">
+            <EntityTypeMapping TypeName="dbaseModel.land">
+              <MappingFragment StoreEntitySet="land">
+                <ScalarProperty Name="location" ColumnName="location" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="poston" ColumnName="poston" />
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mobiles">
+            <EntityTypeMapping TypeName="dbaseModel.mobile">
+              <MappingFragment StoreEntitySet="mobile">
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="poston" ColumnName="poston" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="modelno" ColumnName="modelno" />
+                <ScalarProperty Name="brandname" ColumnName="brandname" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="cameras">
+            <EntityTypeMapping TypeName="dbaseModel.camera">
+              <MappingFragment StoreEntitySet="camera">
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="location" ColumnName="location" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="posttime" ColumnName="posttime" />
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="brandname" ColumnName="brandname" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="areas">
+            <EntityTypeMapping TypeName="dbaseModel.area">
+              <MappingFragment StoreEntitySet="area">
+                <ScalarProperty Name="cid" ColumnName="cid" />
+                <ScalarProperty Name="areaname" ColumnName="areaname" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="cars">
+            <EntityTypeMapping TypeName="dbaseModel.car">
+              <MappingFragment StoreEntitySet="car">
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="area" ColumnName="area" />
+                <ScalarProperty Name="poston" ColumnName="poston" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="brand" ColumnName="brand" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="cities">
+            <EntityTypeMapping TypeName="dbaseModel.city">
+              <MappingFragment StoreEntitySet="city">
+                <ScalarProperty Name="cityname" ColumnName="cityname" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="Model1">
+        <EntityTypeShape EntityType="dbaseModel.contactinfo" Width="1.5" PointX="2.875" PointY="0.5" Height="2.3648893229166665" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbaseModel.menu" Width="1.5" PointX="0.75" PointY="0.5" Height="2.1725878906249996" IsExpanded="true" />
+        <AssociationConnector Association="dbaseModel.FK_menu_menu" ManuallyRouted="false">
+          <ConnectorPoint PointX="1.2819230769230767" PointY="2.6725878906249996" />
+          <ConnectorPoint PointX="1.2819230769230767" PointY="2.9225878906249996" />
+          <ConnectorPoint PointX="1.7284615384615383" PointY="2.9225878906249996" />
+          <ConnectorPoint PointX="1.7284615384615383" PointY="2.6725878906249996" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="dbaseModel.furniture" Width="1.5" PointX="5.125" PointY="3.875" Height="2.5571907552083388" />
+        <EntityTypeShape EntityType="dbaseModel.house" Width="1.5" PointX="5" PointY="0.5" Height="2.9417936197916674" />
+        <EntityTypeShape EntityType="dbaseModel.job" Width="1.5" PointX="7.375" PointY="3.375" Height="3.3263964843750031" />
+        <EntityTypeShape EntityType="dbaseModel.land" Width="1.5" PointX="7.25" PointY="0.5" Height="2.1725878906250031" />
+        <EntityTypeShape EntityType="dbaseModel.mobile" Width="1.5" PointX="4.25" PointY="7.375" Height="2.3648893229166674" />
+        <EntityTypeShape EntityType="dbaseModel.camera" Width="1.5" PointX="0.75" PointY="7.75" Height="2.5571907552083388" />
+        <EntityTypeShape EntityType="dbaseModel.area" Width="1.5" PointX="8.625" PointY="7.875" Height="1.7879850260416674" />
+        <EntityTypeShape EntityType="dbaseModel.car" Width="1.5" PointX="9.375" PointY="0.75" Height="2.9417936197916674" />
+        <EntityTypeShape EntityType="dbaseModel.city" Width="1.5" PointX="6.375" PointY="8" Height="1.5956835937500031" />
+        <AssociationConnector Association="dbaseModel.FK_area_city" >
+          <ConnectorPoint PointX="7.875" PointY="8.7978417968750016" />
+          <ConnectorPoint PointX="8.625" PointY="8.7978417968750016" />
+        </AssociationConnector>
+        </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

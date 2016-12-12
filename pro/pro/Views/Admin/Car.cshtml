@@ -1,0 +1,36 @@
+﻿@using PagedList
+@using PagedList.Mvc
+
+@model IPagedList<pro.Models.car>
+@{
+    ViewBag.Title = "Car";
+    Layout = "~/Views/Shared/Admin.cshtml";
+}
+
+<link href="../../Content/PagedList.css" rel="stylesheet" type="text/css" />
+<h2>Car</h2>
+@foreach(var item in Model)
+{
+    <a href="~/details/Detailscar1/@item.id">
+<table style=" background-color:; border:1px solid black; width:100%">
+<tr>
+<td><img src="@Url.Content(item.image)" width="100px" height="100px" /></td>
+<td>
+<table>
+<tr><td><h3>@item.brand</h3></td><td></td><td></td></tr>
+
+<tr><td>@item.area</td><td align="right">@item.poston</td></tr>
+</table>
+<td>
+<table><tr><td>@item.price/=</td></tr></table>
+</td>
+</td>
+</tr>
+
+
+</table>
+</a>
+}
+<div class="pagedList">
+        @Html.PagedListPager(Model, page => Url.Action("Ads", new { name = "Car", page }), PagedListRenderOptions.PageNumbersOnly)
+    </div>

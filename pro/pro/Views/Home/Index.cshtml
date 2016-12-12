@@ -1,0 +1,70 @@
+﻿@using PagedList
+@using PagedList.Mvc
+
+@model IPagedList<pro.Models.Allproducts>
+
+@{
+    ViewBag.Title = "Index3";
+    Layout = "~/Views/Shared/layout.cshtml";
+    
+}
+
+<h2></h2>
+
+<link href="../../Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+
+@foreach (var item in Model)
+{
+    if(item.category=="Camera")
+    { 
+
+    <a href="~/details/CameraDetails/@item.proid">
+        <table style=" background-color:; border:3px solid #092758; width:100%">
+            <tr>
+                <td><img src="@Url.Content(item.image)" width="100px" height="100px" /></td>
+                <td>
+                    <table>
+                        <tr><td><h3>@item.proname</h3></td><td></td><td></td></tr>
+
+                        <tr><td>@item.city</td><td align="right">@item.time</td></tr>
+                    </table>
+                <td>
+                    <table><tr><td>@item.price/=</td></tr></table>
+                </td>
+                </td>
+            </tr>
+
+
+        </table>
+    </a>
+}
+else if(item.category=="Computer")
+    { 
+
+    <a href="~/details/ComputerDetails/@item.proid">
+        <table style=" background-color:; border:3px solid #092758; width:100%">
+            <tr>
+                <td><img src="@Url.Content(item.image)" width="100px" height="100px" /></td>
+                <td>
+                    <table>
+                        <tr><td><h3>@item.proname</h3></td><td></td><td></td></tr>
+
+                        <tr><td>@item.city</td><td align="right">@item.time</td></tr>
+                    </table>
+                <td>
+                    <table><tr><td>@item.price/=</td></tr></table>
+                </td>
+                </td>
+            </tr>
+
+
+        </table>
+    </a>
+}
+}
+    
+                
+<div class="pagedList">
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }), PagedListRenderOptions.PageNumbersOnly)
+</div>

@@ -1,0 +1,62 @@
+﻿@model IEnumerable<pro.Models.mobile>
+
+@{
+    ViewBag.Title = "Mobile";
+    
+    Layout = "~/Views/Shared/layout.cshtml";
+    var grid = new WebGrid(source: Model, canPage: true, rowsPerPage: 4);
+    grid.Pager(WebGridPagerModes.All);
+}
+<style type="text/css">
+.part
+{
+width:100%;
+height:100px;
+   border:1px solid black;;
+
+}
+.party td
+{
+       border-bottom:1px solid black;
+      width:50px;
+    margin-top:10px;
+}
+.footer
+{
+   
+   border:1px solid black;
+}
+.party
+{
+    margin-left:15%;
+    
+    margin-top:10px;
+    display:table;
+    
+    
+    
+}
+
+</style>
+<a href="../../Controllers/detailsController.cs">
+<div>
+@grid.GetHtml(
+tableStyle:"party",
+footerStyle: "part",
+headerStyle: "footer",
+rowStyle:"part",
+alternatingRowStyle:"part",
+columns:grid.Columns(
+//grid.Column(columnName:"image",header:<img src="@Url.Content(item.image)"/>),
+grid.Column(
+
+                     format: (item) =>
+                     {
+                         return Html.Raw(string.Format("<text><img src=\"{0}\" alt=\"Image\" width='100px' height='100px'/></text>", Url.Content(@item.image)));
+                     }
+                    ),
+grid.Column(columnName:"brandname",header:"brandname"),
+grid.Column(columnName:"price",header:"brandname")))
+</div>
+</a>
+
